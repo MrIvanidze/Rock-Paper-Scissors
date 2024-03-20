@@ -1,0 +1,15 @@
+H:\test\123\Rock_Paper_Scissors\bin\Debug\net6.0\Rock_Paper_Scissors.exe
+H:\test\123\Rock_Paper_Scissors\bin\Debug\net6.0\Rock_Paper_Scissors.deps.json
+H:\test\123\Rock_Paper_Scissors\bin\Debug\net6.0\Rock_Paper_Scissors.runtimeconfig.json
+H:\test\123\Rock_Paper_Scissors\bin\Debug\net6.0\Rock_Paper_Scissors.dll
+H:\test\123\Rock_Paper_Scissors\bin\Debug\net6.0\Rock_Paper_Scissors.pdb
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.csproj.AssemblyReference.cache
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.GeneratedMSBuildEditorConfig.editorconfig
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.AssemblyInfoInputs.cache
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.AssemblyInfo.cs
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.csproj.CoreCompileInputs.cache
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.dll
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\refint\Rock_Paper_Scissors.dll
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.pdb
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\Rock_Paper_Scissors.genruntimeconfig.cache
+H:\test\123\Rock_Paper_Scissors\obj\Debug\net6.0\ref\Rock_Paper_Scissors.dll

@@ -1,4 +1,6 @@
-﻿namespace Rock_Paper_Scissors
+﻿using System.Runtime.Versioning;
+
+namespace Rock_Paper_Scissors
 {
     internal class Program
     {
@@ -38,6 +40,36 @@
             Console.WriteLine($"\n \n{frame} \n→Правила простi:\n" +
                               "→Доступна зброя:\r\n\r\n→Камiнь\r\n→Ножицi\r\n→Папiр\r\n\n→Папiр перемагає над камiнням, але програє ножицям.\r\n→Ножицi перемагають над папером, але програють камiнню.\r\n→Камiння перемагає ножицi, але програє паперу.\r\n\n→Вiдбувається старт битви. Проти нас грає ШI, який обирає один iз видiв зброї, пiсля чого по правилах вище обирається переможець раунду.\r\n\r\n→Раундiв у нас ТРИ.\r\n→Пiсля третього раунду визначається переможець битви.\r\n\r\n→Бал за перемогу користувачу нараховується тiльки у випадку двох перемог i одного програшу, або трьох перемог та нулю програшiв за битву.\n→Грати можна тiльки з 12 років. \n→Щоб почати грати потрiбно пройти реєстрацiю.");
         }
+        public static void registration()
+        {
+            string frame = "===================================================================================================================================";
+
+            Console.WriteLine(frame);
+
+            Console.Write("Напишiть ваш нiкнейм: ");
+            string nikname = Console.ReadLine();
+            Console.Write("Напишiть свiй вiк: ");
+            int age = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(frame);
+
+            if (age < 12)
+            {
+                Console.WriteLine("В цю гру можна грати тiльки з 12 рокiв!");
+                Console.WriteLine($"Коли підростеш сподіваюся ми зустрінемось. Бувай {nikname} :)");
+            }
+            else 
+            {
+                Console.WriteLine("");
+            }
+                
+        }
+
+        public static void ByeBye(string[] args) 
+        {
+            Console.WriteLine("Коли підростеш сподіваюся ми зустрінемось. Бувай  :)");
+        }
+
         static void Main(string[] args)
         {
             Hello();
@@ -46,6 +78,5 @@
 
 
         }
-        public static void registration() { }
     }
 }

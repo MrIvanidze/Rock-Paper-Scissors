@@ -45,6 +45,7 @@ namespace Rock_Paper_Scissors
 
             Console.WriteLine($"\n \n{frame} \n→Правила простi:\n" +
                               "\n→Доступна зброя:\r\n\r\n→Камiнь\r\n→Ножицi\r\n→Папiр\r\n\n→Папiр перемагає над камiнням, але програє ножицям.\r\n→Ножицi перемагають над папером, але програють камiнню.\r\n→Камiння перемагає ножицi, але програє паперу.\r\n\n→Вiдбувається старт битви. Проти нас грає ШI, який обирає один iз видiв зброї, пiсля чого по правилах вище обирається переможець раунду.\r\n\r\n→Раундiв у нас ТРИ.\r\n→Пiсля третього раунду визначається переможець битви.\r\n\r\n→Бал за перемогу користувачу нараховується тiльки у випадку двох перемог i одного програшу, або трьох перемог та нулю програшiв за битву.\n→Грати можна тiльки з 12 років. \n→Щоб почати грати потрiбно пройти реєстрацiю.");
+            Console.WriteLine(frame + "\n\n");
         }
         public static void registration()
         {
@@ -70,12 +71,42 @@ namespace Rock_Paper_Scissors
                 Console.WriteLine($"→Нiк: {nikname}\r\n" +
                                   $"→Вiк: {age}\r\n" +
                                   $"→Кiлькiсть зiграних раундiв: {gamePlayed}\r\n" +
-                                  $"→Кiлькiсть перемог: {scoreWin})");
+                                  $"→Кiлькiсть перемог: {scoreWin}");
                 Console.WriteLine(frame);
             }
-            
-            Console.WriteLine("Готові почати свою першу гру? (Yes|No)");
-            
+
+            Console.WriteLine("\n" + frame + "\n");
+            Console.Write("→Готовi почати свою першу гру? (Yes|No) \n→");
+            string WonnaPlay = Console.ReadLine();
+
+            WonnaPlay = WonnaPlay.ToLower();
+
+            if (WonnaPlay == "yes")
+            {
+                Console.WriteLine(frame);
+                Console.WriteLine("Тодi починаємо!");
+                Console.WriteLine(frame + "\n\n");
+                Console.WriteLine("                 ▄██████▄     ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████          \r\n                ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███          \r\n                ███    █▀    ███    ███ ███   ███   ███   ███    █▀           \r\n               ▄███          ███    ███ ███   ███   ███  ▄███▄▄▄              \r\n              ▀▀███ ████▄  ▀███████████ ███   ███   ███ ▀▀███▀▀▀              \r\n                ███    ███   ███    ███ ███   ███   ███   ███    █▄           \r\n                ███    ███   ███    ███ ███   ███   ███   ███    ███          \r\n                ████████▀    ███    █▀   ▀█   ███   █▀    ██████████          ");             
+                Game();
+            }
+            else if (WonnaPlay == "no")
+            {
+                Console.WriteLine("\n\n" + frame);
+                Console.WriteLine($"→Ех... Бувай {nikname} :(");
+                Console.WriteLine(frame);
+            }
+        }
+
+        public static void Game()
+        {
+            Random enemyWeapon = new Random;
+
+            for (int i = 0; i <= 3; i++)
+            {
+                Console.WriteLine($"{frame} \n→Нагадую, що: 1 - Камiнь   2 - папiр   3 - ножицi \n {frame}");
+                Console.Write("→То що ви оберете? \n→");
+
+            }
         }
 
 

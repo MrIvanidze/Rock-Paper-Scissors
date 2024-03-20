@@ -4,6 +4,11 @@ namespace Rock_Paper_Scissors
 {
     internal class Program
     {
+        public static int gamePlayed = 0;
+        public static int scoreWin = 0;
+        public static string nikname;
+        public static int age;
+        public static string frame = "===================================================================================================================================";
 
         public static void Hello()
         {
@@ -11,7 +16,7 @@ namespace Rock_Paper_Scissors
         }
         public static void languageAndRules(string[] leng)
         {
-            string frame = "===================================================================================================================================";
+
 
             Console.WriteLine($"\n{frame} \n→ Welcome to the game \"rock, scissors, paper\"! \n{frame} \r\n→ Before you start playing, select the game language, just write \"Eng\" or \"Ua\":");
             Console.Write($"→ ");
@@ -31,6 +36,7 @@ namespace Rock_Paper_Scissors
             else
             {
                 Console.WriteLine($"→I don't know \"{GameLanguageNL}\" language :( \nCan you try again?");
+                return;
             }
 
             Console.WriteLine(frame);
@@ -38,37 +44,40 @@ namespace Rock_Paper_Scissors
             Console.WriteLine("\n _____                                                  _____ \r\n( ___ )------------------------------------------------( ___ )\r\n |   |                                                  |   | \r\n |   | $$$$$$$\\            $$\\                          |   | \r\n |   | $$  __$$\\           $$ |                         |   | \r\n |   | $$ |  $$ |$$\\   $$\\ $$ | $$$$$$\\   $$$$$$$\\ $$\\  |   | \r\n |   | $$$$$$$  |$$ |  $$ |$$ |$$  __$$\\ $$  _____|\\__| |   | \r\n |   | $$  __$$< $$ |  $$ |$$ |$$$$$$$$ |\\$$$$$$\\       |   | \r\n |   | $$ |  $$ |$$ |  $$ |$$ |$$   ____| \\____$$\\ $$\\  |   | \r\n |   | $$ |  $$ |\\$$$$$$  |$$ |\\$$$$$$$\\ $$$$$$$  |\\__| |   | \r\n |   | \\__|  \\__| \\______/ \\__| \\_______|\\_______/      |   | \r\n |___|                                                  |___| \r\n(_____)------------------------------------------------(_____)");
 
             Console.WriteLine($"\n \n{frame} \n→Правила простi:\n" +
-                              "→Доступна зброя:\r\n\r\n→Камiнь\r\n→Ножицi\r\n→Папiр\r\n\n→Папiр перемагає над камiнням, але програє ножицям.\r\n→Ножицi перемагають над папером, але програють камiнню.\r\n→Камiння перемагає ножицi, але програє паперу.\r\n\n→Вiдбувається старт битви. Проти нас грає ШI, який обирає один iз видiв зброї, пiсля чого по правилах вище обирається переможець раунду.\r\n\r\n→Раундiв у нас ТРИ.\r\n→Пiсля третього раунду визначається переможець битви.\r\n\r\n→Бал за перемогу користувачу нараховується тiльки у випадку двох перемог i одного програшу, або трьох перемог та нулю програшiв за битву.\n→Грати можна тiльки з 12 років. \n→Щоб почати грати потрiбно пройти реєстрацiю.");
+                              "\n→Доступна зброя:\r\n\r\n→Камiнь\r\n→Ножицi\r\n→Папiр\r\n\n→Папiр перемагає над камiнням, але програє ножицям.\r\n→Ножицi перемагають над папером, але програють камiнню.\r\n→Камiння перемагає ножицi, але програє паперу.\r\n\n→Вiдбувається старт битви. Проти нас грає ШI, який обирає один iз видiв зброї, пiсля чого по правилах вище обирається переможець раунду.\r\n\r\n→Раундiв у нас ТРИ.\r\n→Пiсля третього раунду визначається переможець битви.\r\n\r\n→Бал за перемогу користувачу нараховується тiльки у випадку двох перемог i одного програшу, або трьох перемог та нулю програшiв за битву.\n→Грати можна тiльки з 12 років. \n→Щоб почати грати потрiбно пройти реєстрацiю.");
         }
         public static void registration()
         {
-            string frame = "===================================================================================================================================";
 
             Console.WriteLine(frame);
 
-            Console.Write("Напишiть ваш нiкнейм: ");
-            string nikname = Console.ReadLine();
-            Console.Write("Напишiть свiй вiк: ");
-            int age = int.Parse(Console.ReadLine());
+            Console.Write("→Напишiть ваш нiкнейм: ");
+            nikname = Console.ReadLine();
+            Console.Write("→Напишiть свiй вiк: ");
+            age = int.Parse(Console.ReadLine());
 
+            Console.WriteLine(frame + "\n\n");
             Console.WriteLine(frame);
 
             if (age < 12)
             {
-                Console.WriteLine("В цю гру можна грати тiльки з 12 рокiв!");
-                Console.WriteLine($"Коли підростеш сподіваюся ми зустрінемось. Бувай {nikname} :)");
+                Console.WriteLine("→В цю гру можна грати тiльки з 12 рокiв!");
+                Console.WriteLine($"→Коли підростеш сподіваюся ми зустрінемось. Бувай {nikname} :)");
+                return;
             }
-            else 
+            else
             {
-                Console.WriteLine("");
+                Console.WriteLine($"→Нiк: {nikname}\r\n" +
+                                  $"→Вiк: {age}\r\n" +
+                                  $"→Кiлькiсть зiграних раундiв: {gamePlayed}\r\n" +
+                                  $"→Кiлькiсть перемог: {scoreWin})");
+                Console.WriteLine(frame);
             }
-                
+            
+            Console.WriteLine("Готові почати свою першу гру? (Yes|No)");
+            
         }
 
-        public static void ByeBye(string[] args) 
-        {
-            Console.WriteLine("Коли підростеш сподіваюся ми зустрінемось. Бувай  :)");
-        }
 
         static void Main(string[] args)
         {
@@ -76,7 +85,7 @@ namespace Rock_Paper_Scissors
 
             languageAndRules(args);
 
-
+            registration();
         }
     }
 }

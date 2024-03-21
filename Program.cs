@@ -19,24 +19,28 @@ namespace Rock_Paper_Scissors
 
 
             Console.WriteLine($"\n{frame} \n→ Welcome to the game \"rock, scissors, paper\"! \n{frame} \r\n→ Before you start playing, select the game language, just write \"Eng\" or \"Ua\":");
-            Console.Write($"→ ");
-            string GameLanguageNL = Console.ReadLine();
-            string GameLanguage = GameLanguageNL.ToLower();
 
             Console.WriteLine(frame);
 
-            if (GameLanguage == "eng")
+            for (int i = 0; i < 1; i++)
             {
-                Console.WriteLine("→Ем... ну тут така поблема... мої знання англiйської закiнчилися ще на монулiй строчцi =( \n→Ну, буду сподiватися, що ти розумiєш українську =)");
-            }
-            else if (GameLanguage == "ua")
-            {
-                Console.WriteLine("→Чудово! Мова обрана!");
-            }
-            else
-            {
-                Console.WriteLine($"→I don't know \"{GameLanguageNL}\" language :( \nCan you try again?");
-                return;
+                Console.Write($"→ ");
+                string GameLanguageNL = Console.ReadLine();
+                string GameLanguage = GameLanguageNL.ToLower();
+
+                if (GameLanguage == "eng")
+                {
+                    Console.WriteLine("→Ем... ну тут така поблема... мої знання англiйської закiнчилися ще на монулiй строчцi =( \n→Ну, буду сподiватися, що ти розумiєш українську =)");
+                }
+                else if (GameLanguage == "ua")
+                {
+                    Console.WriteLine("→Чудово! Мова обрана!");
+                }
+                else
+                {
+                    Console.WriteLine($"→I don't know \"{GameLanguageNL}\" language :( \n→Can you try again?");
+                    i--;
+                }
             }
 
             Console.WriteLine(frame);
@@ -84,7 +88,7 @@ namespace Rock_Paper_Scissors
             if (WonnaPlay == "yes")
             {
                 Console.WriteLine(frame);
-                Console.WriteLine("Тодi починаємо!");
+                Console.WriteLine("→Тодi починаємо!");
                 Console.WriteLine(frame + "\n\n");
                 Console.WriteLine("                 ▄██████▄     ▄████████   ▄▄▄▄███▄▄▄▄      ▄████████          \r\n                ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███          \r\n                ███    █▀    ███    ███ ███   ███   ███   ███    █▀           \r\n               ▄███          ███    ███ ███   ███   ███  ▄███▄▄▄              \r\n              ▀▀███ ████▄  ▀███████████ ███   ███   ███ ▀▀███▀▀▀              \r\n                ███    ███   ███    ███ ███   ███   ███   ███    █▄           \r\n                ███    ███   ███    ███ ███   ███   ███   ███    ███          \r\n                ████████▀    ███    █▀   ▀█   ███   █▀    ██████████          ");             
                 Game();
@@ -99,14 +103,118 @@ namespace Rock_Paper_Scissors
 
         public static void Game()
         {
-            Random enemyWeapon = new Random;
+            string win = " /$$     /$$ /$$$$$$  /$$   /$$       /$$      /$$  /$$$$$$  /$$   /$$\r\n|  $$   /$$//$$__  $$| $$  | $$      | $$  /$ | $$ /$$__  $$| $$$ | $$\r\n \\  $$ /$$/| $$  \\ $$| $$  | $$      | $$ /$$$| $$| $$  \\ $$| $$$$| $$\r\n  \\  $$$$/ | $$  | $$| $$  | $$      | $$/$$ $$ $$| $$  | $$| $$ $$ $$\r\n   \\  $$/  | $$  | $$| $$  | $$      | $$$$_  $$$$| $$  | $$| $$  $$$$\r\n    | $$   | $$  | $$| $$  | $$      | $$$/ \\  $$$| $$  | $$| $$\\  $$$\r\n    | $$   |  $$$$$$/|  $$$$$$/      | $$/   \\  $$|  $$$$$$/| $$ \\  $$\r\n    |__/    \\______/  \\______/       |__/     \\__/ \\______/ |__/  \\__/";
+            string lost = " /$$     /$$                        /$$                       /$$    \r\n|  $$   /$$/                       | $$                      | $$    \r\n \\  $$ /$$//$$$$$$  /$$   /$$      | $$  /$$$$$$   /$$$$$$$ /$$$$$$  \r\n  \\  $$$$//$$__  $$| $$  | $$      | $$ /$$__  $$ /$$_____/|_  $$_/  \r\n   \\  $$/| $$  \\ $$| $$  | $$      | $$| $$  \\ $$|  $$$$$$   | $$    \r\n    | $$ | $$  | $$| $$  | $$      | $$| $$  | $$ \\____  $$  | $$ /$$\r\n    | $$ |  $$$$$$/|  $$$$$$/      | $$|  $$$$$$/ /$$$$$$$/  |  $$$$/\r\n    |__/  \\______/  \\______/       |__/ \\______/ |_______/    \\___/  ";
+            string draw = " /$$$$$$$                                  \r\n| $$__  $$                                 \r\n| $$  \\ $$  /$$$$$$  /$$$$$$  /$$  /$$  /$$\r\n| $$  | $$ /$$__  $$|____  $$| $$ | $$ | $$\r\n| $$  | $$| $$  \\__/ /$$$$$$$| $$ | $$ | $$\r\n| $$  | $$| $$      /$$__  $$| $$ | $$ | $$\r\n| $$$$$$$/| $$     |  $$$$$$$|  $$$$$/$$$$/\r\n|_______/ |__/      \\_______/ \\_____/\\___/ ";
+            
+            Random enemyWeapon = new Random();
+            
+            EnumWeapon EnemyWeapon;
+            EnumWeapon Weapon;
 
-            for (int i = 0; i <= 3; i++)
+            int WonRaunds = 0;
+            int LostRaunds = 0;
+            int DrawRaunds = 0;
+
+            for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"{frame} \n→Нагадую, що: 1 - Камiнь   2 - папiр   3 - ножицi \n {frame}");
-                Console.Write("→То що ви оберете? \n→");
+                Console.WriteLine($"\n\n{frame}\n\n                ROUND {i} \n");
 
+                int RundomWeapon = enemyWeapon.Next(0, 4);
+
+                Console.WriteLine($"{frame}\n→Нагадую, що: 1 - Камiнь   2 - папiр   3 - ножицi \n{frame}");
+                Console.Write("→То що ви оберете? \n→ ");
+                int heroWeapon = int.Parse(Console.ReadLine());
+
+                if (heroWeapon > 3 || heroWeapon < 1)
+                {
+                    Console.WriteLine("→Спробуйте ще раз, будь ласка.");
+                    i--;
+                    continue;
+                }
+                else 
+                {
+                    Weapon = (EnumWeapon)heroWeapon;
+                }
+                Console.WriteLine($"→Отже ваша зброя: {Weapon}" );
+                EnemyWeapon = (EnumWeapon)RundomWeapon;
+                Console.WriteLine($"→Зброя ШI: {EnemyWeapon}\n\n");
+
+                if (heroWeapon == 1 && RundomWeapon == 2)
+                {
+                    Console.WriteLine(lost);
+                    LostRaunds++;
+                }
+                else if (heroWeapon == 2 && RundomWeapon == 3)
+                {
+                    Console.WriteLine(lost);
+                    LostRaunds++;
+                }
+                else if (heroWeapon == 1 && RundomWeapon == 3)
+                {
+                    Console.WriteLine(win);
+                    WonRaunds++;
+                }
+                else if (heroWeapon == 2 && RundomWeapon == 1)
+                {
+                    Console.WriteLine(win);
+                    WonRaunds++;
+                }
+                else if (heroWeapon == 3 && RundomWeapon == 1)
+                {
+                    Console.WriteLine(lost);
+                    LostRaunds++;
+                }
+                else if (heroWeapon == 3 && RundomWeapon == 2)
+                {
+                    Console.WriteLine(win);
+                    WonRaunds++;
+                }
+                else if (heroWeapon == RundomWeapon) 
+                {
+                    Console.WriteLine(draw);
+                    DrawRaunds++;
+                }
             }
+
+            gamePlayed++;
+
+            Console.WriteLine("\n\n" + frame);
+
+            if (WonRaunds > LostRaunds)
+            {
+                Console.WriteLine(" /$$     /$$ /$$$$$$  /$$   /$$       /$$      /$$  /$$$$$$  /$$   /$$                 \r\n|  $$   /$$//$$__  $$| $$  | $$      | $$  /$ | $$ /$$__  $$| $$$ | $$                 \r\n \\  $$ /$$/| $$  \\ $$| $$  | $$      | $$ /$$$| $$| $$  \\ $$| $$$$| $$                 \r\n  \\  $$$$/ | $$  | $$| $$  | $$      | $$/$$ $$ $$| $$  | $$| $$ $$ $$                 \r\n   \\  $$/  | $$  | $$| $$  | $$      | $$$$_  $$$$| $$  | $$| $$  $$$$                 \r\n    | $$   | $$  | $$| $$  | $$      | $$$/ \\  $$$| $$  | $$| $$\\  $$$                 \r\n    | $$   |  $$$$$$/|  $$$$$$/      | $$/   \\  $$|  $$$$$$/| $$ \\  $$                 \r\n    |__/    \\______/  \\______/       |__/     \\__/ \\______/ |__/  \\__/                 \r\n                                                                                       \r\n                                                                                       \r\n                                                                                       \r\n /$$$$$$$$ /$$   /$$ /$$$$$$  /$$$$$$         /$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$\r\n|__  $$__/| $$  | $$|_  $$_/ /$$__  $$       /$$__  $$ /$$__  $$| $$$    /$$$| $$_____/\r\n   | $$   | $$  | $$  | $$  | $$  \\__/      | $$  \\__/| $$  \\ $$| $$$$  /$$$$| $$      \r\n   | $$   | $$$$$$$$  | $$  |  $$$$$$       | $$ /$$$$| $$$$$$$$| $$ $$/$$ $$| $$$$$   \r\n   | $$   | $$__  $$  | $$   \\____  $$      | $$|_  $$| $$__  $$| $$  $$$| $$| $$__/   \r\n   | $$   | $$  | $$  | $$   /$$  \\ $$      | $$  \\ $$| $$  | $$| $$\\  $ | $$| $$      \r\n   | $$   | $$  | $$ /$$$$$$|  $$$$$$/      |  $$$$$$/| $$  | $$| $$ \\/  | $$| $$$$$$$$\r\n   |__/   |__/  |__/|______/ \\______/        \\______/ |__/  |__/|__/     |__/|________/");
+                scoreWin++;
+            }
+            else if (WonRaunds < LostRaunds)
+            {
+                Console.WriteLine(" /$$     /$$ /$$$$$$  /$$   /$$       /$$        /$$$$$$   /$$$$$$  /$$$$$$$$          \r\n|  $$   /$$//$$__  $$| $$  | $$      | $$       /$$__  $$ /$$__  $$|__  $$__/          \r\n \\  $$ /$$/| $$  \\ $$| $$  | $$      | $$      | $$  \\ $$| $$  \\__/   | $$             \r\n  \\  $$$$/ | $$  | $$| $$  | $$      | $$      | $$  | $$|  $$$$$$    | $$             \r\n   \\  $$/  | $$  | $$| $$  | $$      | $$      | $$  | $$ \\____  $$   | $$             \r\n    | $$   | $$  | $$| $$  | $$      | $$      | $$  | $$ /$$  \\ $$   | $$             \r\n    | $$   |  $$$$$$/|  $$$$$$/      | $$$$$$$$|  $$$$$$/|  $$$$$$/   | $$             \r\n    |__/    \\______/  \\______/       |________/ \\______/  \\______/    |__/             \r\n                                                                                       \r\n                                                                                       \r\n                                                                                       \r\n /$$$$$$$$ /$$   /$$ /$$$$$$  /$$$$$$         /$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$\r\n|__  $$__/| $$  | $$|_  $$_/ /$$__  $$       /$$__  $$ /$$__  $$| $$$    /$$$| $$_____/\r\n   | $$   | $$  | $$  | $$  | $$  \\__/      | $$  \\__/| $$  \\ $$| $$$$  /$$$$| $$      \r\n   | $$   | $$$$$$$$  | $$  |  $$$$$$       | $$ /$$$$| $$$$$$$$| $$ $$/$$ $$| $$$$$   \r\n   | $$   | $$__  $$  | $$   \\____  $$      | $$|_  $$| $$__  $$| $$  $$$| $$| $$__/   \r\n   | $$   | $$  | $$  | $$   /$$  \\ $$      | $$  \\ $$| $$  | $$| $$\\  $ | $$| $$      \r\n   | $$   | $$  | $$ /$$$$$$|  $$$$$$/      |  $$$$$$/| $$  | $$| $$ \\/  | $$| $$$$$$$$\r\n   |__/   |__/  |__/|______/ \\______/        \\______/ |__/  |__/|__/     |__/|________/");
+            }
+            else if (DrawRaunds == 3) 
+            {
+                Console.WriteLine(" /$$$$$$$  /$$$$$$$   /$$$$$$  /$$      /$$  /$$$$        /$$   /$$  /$$$$$$  /$$      /$$  /$$$$ \r\n| $$__  $$| $$__  $$ /$$__  $$| $$  /$ | $$ /$$  $$      | $$  | $$ /$$__  $$| $$  /$ | $$ /$$  $$\r\n| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$ /$$$| $$|__/\\ $$      | $$  | $$| $$  \\ $$| $$ /$$$| $$|__/\\ $$\r\n| $$  | $$| $$$$$$$/| $$$$$$$$| $$/$$ $$ $$    /$$/      | $$$$$$$$| $$  | $$| $$/$$ $$ $$    /$$/\r\n| $$  | $$| $$__  $$| $$__  $$| $$$$_  $$$$   /$$/       | $$__  $$| $$  | $$| $$$$_  $$$$   /$$/ \r\n| $$  | $$| $$  \\ $$| $$  | $$| $$$/ \\  $$$  |__/        | $$  | $$| $$  | $$| $$$/ \\  $$$  |__/  \r\n| $$$$$$$/| $$  | $$| $$  | $$| $$/   \\  $$   /$$        | $$  | $$|  $$$$$$/| $$/   \\  $$   /$$  \r\n|_______/ |__/  |__/|__/  |__/|__/     \\__/  |__/        |__/  |__/ \\______/ |__/     \\__/  |__/  ");
+            }
+
+            Console.WriteLine("\n\n" + frame);
+            Console.Write("→Бажаєте зiграти ще раз? (Yes|No) \n→");
+            string again = Console.ReadLine();
+            again = again.ToLower();
+
+            if (again == "yes")
+            {
+                Console.WriteLine("→Чудово! Отже починаємо! \n\n" + frame);
+                Game();
+            }
+            else 
+            {
+                Console.WriteLine($"Ну тоді бувайте {nikname} \n" +
+                    $"Ваша статистика:\n" +
+                    $"→Нiк: {nikname}\r\n" +
+                    $"→Вiк: {age}\r\n" +
+                    $"→Кiлькiсть зiграних раундiв: {gamePlayed}\r\n" +
+                    $"→Кiлькiсть перемог: {scoreWin}");
+            }
+
         }
 
 

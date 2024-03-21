@@ -1,6 +1,6 @@
-﻿enum Weapon 
+﻿enum EnumWeapon : int 
 {
-    Камінь = 1,
-    Папір = 2,
+    Камiнь = 1,
+    Папiр = 2,
     Ножицi = 3
 }
